@@ -1,0 +1,6 @@
+PA0
+
+Ubuntu打开终端
+~通过命令行打开,Alt+F2打开命令输入框,输入gnome-terminal
+~通过快捷键打开,Ctrl+Alt+T
+~单击Dash主页图标,在搜索框中输入ter搜索终端
