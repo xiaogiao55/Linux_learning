@@ -3,4 +3,31 @@ PA0
 Ubuntu打开终端
 ~通过命令行打开,Alt+F2打开命令输入框,输入gnome-terminal
 ~通过快捷键打开,Ctrl+Alt+T
-~单击Dash主页图标,在搜索框中输入ter搜索终端
+
+切换root用户,使用sudo
+~第一次su -要求输入password,但提示Authentication failure,这是由于刚安装完
+没有设置root用户密码导致的,可输入sudo passwd设置密码，之后再使用该密码登录root用户即可
+
+su -和sudo的输入密码问题
+在终端操作通过su -进入root account或者第一次使用sudo指令时都需要输入密码,二者的密码不同
+su -的密码是上一个part设置的密码 linux+手机登录密码
+sudo的密码是开机界面用户密码
+
+ping镜像网站
+ping之前一定要连网!ping失败的原因可能有三种:没联网/Badly configured resolv.conf File
+应该add a nameserver/防火墙限制原因
+
+防火墙基本设置
+
+在使用很多命令行语句后都会提示没有权限,此时都需要在语句前加一个sudo
+sudo bash -c...设置APT源文件
+sudo apt-get update
+sudo apt-get install package_name 安装后 apt-list --installed可查看已安装的软件包
+
+中文输入法安装
+Settings-Region & Language-Manage Installed Languages,直接安装语言包
+这里提示无法安装,解决方法是终端sudo dpkg --configure -a
+完成语言包的安装后需要对中文输入法安装,终端sudo apt-get install ibus-pinyin
+最后Setttings-Keyboard-Input Sources-Chinese(Intelligent Pinyin)
+可用Shift/Windows+space切换输入法
+
