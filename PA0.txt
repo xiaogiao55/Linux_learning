@@ -18,6 +18,12 @@ ping之前一定要连网!ping失败的原因可能有三种:没联网/Badly con
 应该add a nameserver/防火墙限制原因
 
 防火墙基本设置
+查看防火墙状态: sudo ufw status
+打开防火墙: sudo ufw enable
+重启防火墙: sudo ufw reload
+开放指定端口: sudo ufw allow xx
+~注意: 只有当防火墙的状态跳变时,才会收到Rules updated,否则若防火墙本身开启但命令行要求其开启,
+会提示Skipping了这个指令,但不是报错,所以可再次仔细查看防火墙状态
 
 在使用很多命令行语句后都会提示没有权限,此时都需要在语句前加一个sudo
 sudo bash -c...设置APT源文件
@@ -31,3 +37,49 @@ Settings-Region & Language-Manage Installed Languages,直接安装语言包
 最后Setttings-Keyboard-Input Sources-Chinese(Intelligent Pinyin)
 可用Shift/Windows+space切换输入法
 
+vim重装
+~彻底卸载 vim
+sudo apt-get remove vim vim-runtime vim-tiny vim-common vim-scripts vim-doc
+~重新安装 vim
+sudo apt-get install vim
+
+GNU diff format
+diff是一个工具程序,用来比较两个文本文件的差异
+diff有三种格式:normal diff/context diff/unified diff
+因为考虑到normal diff的显示结果太简单,最好加入上下文以便更好地了解发生的变动,从而推出了context diff
+但若两个文件的相似度很高,那context diff将显示大量重复的内容,浪费空间
+于是GNU diff推出了合并格式的diff,也就是unified diff
+
+使用方法是加入u参数
+$ diff -u f1 f2
+显示结果为
+--- f1 ~~~~~~~~~~~~~~~~
++++ f2 ~~~~~~~~~~~~~~~~
+@@ -1,7 +1,7 @@
+~
+~
+~
+-a
++b
+~
+~
+~
+这里"---"表示变动前的文件,"+++"表示变动后的文件
+变动的位置用两个@作为起始和结束,"-"表示变动前的第一个文件,从第1行开始下面连续的7行
+"+"表示变动后的第二个文件,从第1行开始下面连续的7行
+变动的内容中,"-"表示第一个文件删除的行,"+"表示第二个文件新增的行
+
+Linux入门教程 man快速入门
+Linux下编写Hello World程序 写完hello.c文件后 使用gcc命令行进行编译 发现gcc命令行无法下载
+(以前有过很多包都无法正常下载的情况)
+Ubuntu安装软件时经常因为软件包之间的依赖关系无法完成安装,而aptitude命令可以自动处理安装包之间的依赖关系
+~完成aptitude命令安装
+sudo apt install aptitude
+~再使用aptitude自动安装某个软件包
+sudo aptitude install 软件包
+
+现在发现不是自己建仓库是有git clone的代码链接人家都准备好了
+只需要在每开启新PA的时候开一个分支然后做实验,完成一个PA节后再merge一下,再切回master分支
+看来我这个Linux_learning库开得有点多余了哈哈哈,没事最后commit一下就当PA0完成的一个纪念好了
+
+祝贺 坚持 加油
